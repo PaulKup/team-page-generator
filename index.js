@@ -1,27 +1,11 @@
-const employeeCard = require('./src/page-template');
-
+const pageTemplate = require('./src/page-template');
+const Employee = require('./lib/Employee');
+// const Engineer = require('./lib/Engineer');
+// const Intern = require('./lib/Intern');
+// const Manager = require('./lib/Manager');
 const fs = require('fs');
 
-const writeFile = fileContent => {
-    return new Promise((resolve, reject) => {
-      fs.writeFile('./dist/index.html', fileContent, err => {
-        // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
-        if (err) {
-          reject(err);
-          // return out of the function here to make sure the Promise doesn't accidentally execute the resolve() function as well
-          return;
-        }
-  
-        // if everything went well, resolve the Promise and send the successful data to the `.then()` method
-        resolve({
-          ok: true,
-          message: 'File created!'
-        });
-      });
-    });
-  };
-
-let employee = [
+let employees = [
     {
         name: 'Mike',
         role: 'manager',
@@ -44,9 +28,12 @@ let employee = [
         school: '2'
     }
 ];
-const data = employeeCard(employee);
-console.log(typeof(data));
+const data = pageTemplate(employees);
 
 fs.writeFile('./dist/index.html', data, (err) => {
     if(err) throw err;
 })
+
+const mike = new Employee('mike', '2', 'laskdjf');
+
+console.log(typeof(mike.getEmail()));
