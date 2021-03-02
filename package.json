@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/PaulKup/team-page-generator/issues"
   },
-  "homepage": "https://github.com/PaulKup/team-page-generator#readme"
+  "homepage": "https://github.com/PaulKup/team-page-generator#readme",
+  "dependencies": {
+    "bootstrap": "^5.0.0-beta2"
+  }
 }
