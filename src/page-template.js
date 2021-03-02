@@ -5,17 +5,19 @@ const EmployeeCardConstructor = employeeInfo => {
       if (employee.role == 'Manager') {
         xtraInfo = 'Office number: ' + employee.officeNumber;
       } else if (employee.role == 'Engineer') {
-        xtraInfo = 'GitHub: ' + employee.github;
+        xtraInfo = "GitHub: <a href='https://github.com/" + employee.github + "'target='_blank'>github.com/" + employee.github + "</a>";
       } else {
         xtraInfo = 'School: ' + employee.school;
       }
-      return `<div class="card" style="width: 18rem;">
+      return `<div class="card m-4" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title bg-primary">${employee.name}</h5>
-            <h6 class="card-subtitle mb-2 bg-primary">${employee.role}</h6>
+          <div class="bg-primary text-white">
+          <h5 class="card-title text-center">${employee.name}</h5>
+          <h6 class="card-subtitle mb-2 text-center">${employee.role}</h6>
+          </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${employee.id}</li>
-                <li class="list-group-item">Email: ${employee.email}</li>
+                <li class="list-group-item">Email: <a href = "mailto: ${employee.email}">${employee.email}</a></li>
                 <li class="list-group-item">${xtraInfo}</li>
             </ul>
           </div>
@@ -41,13 +43,14 @@ const pageTemplate = employeeInfo => {
   </head>
   <body>
   <header>
-    <h1 class="bg-primary text-white d-flex justify-content-center p-3">My Team</h1>l
+    <h1 class="bg-primary text-white d-flex justify-content-center p-3">My Team</h1>
   </header>
-  <main>
+  <main class="d-flex flex-wrap justify-content-around">
   ${ EmployeeCardConstructor(employeeInfo) }
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   </body>
+  </html>
     `;
   };
   module.exports = pageTemplate;
