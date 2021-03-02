@@ -13,6 +13,6 @@ test('creates engineer object with inherited properties and new properties', () 
     expect(mike.getName()).toEqual('mike');
     expect(mike.getId()).toBe('2');
     expect(mike.getEmail()).toBe('asdf');
-    expect(mike.getGithub()).toBe('github');
+    expect(mike.getGithub()).toBe('github.com/github');
     expect(mike.getRole()).toBe('Engineer');
 })
